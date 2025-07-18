@@ -1,3 +1,5 @@
+export type TUsersList = IUser[]
+
 export interface IUser {
 	id: number
 	firstName: string
