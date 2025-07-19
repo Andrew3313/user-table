@@ -1,4 +1,5 @@
 import './globals.css'
+import { Footer } from '@/features/footer'
 import { Header } from '@/features/header'
 import { Container } from '@/shared/components'
 import { MainProvider } from '@/shared/providers'
@@ -21,13 +22,15 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ru' suppressHydrationWarning>
-			<body className={`${inter.className} antialiased`}>
+			<body
+				className={`${inter.className} flex min-h-screen flex-col antialiased`}
+			>
 				<MainProvider>
 					<Header />
 					<main className='relative mb-4 flex-grow px-2'>
 						<Container>{children}</Container>
 					</main>
-					{/* <Footer /> */}
+					<Footer />
 				</MainProvider>
 			</body>
 		</html>

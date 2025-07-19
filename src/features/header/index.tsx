@@ -11,7 +11,7 @@ export function Header() {
 				<ToggleTheme />
 			</div>
 			<h2 className='text-center text-gray-600 transition-colors duration-300 dark:text-gray-300'>
-				Нажмите на пользователя, чтобы увидеть его посты
+				Нажмите на пользователя, чтобы посмотреть его посты
 			</h2>
 		</header>
 	)
