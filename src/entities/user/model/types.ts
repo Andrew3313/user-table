@@ -5,6 +5,22 @@ export type TUserSortKey = keyof Pick<
 	'firstName' | 'lastName' | 'age' | 'email' | 'gender'
 >
 
+export type TSortOrder = 'asc' | 'desc'
+
+export interface IGetUsersParams {
+	limit?: number
+	skip?: number
+	sortBy?: TUserSortKey
+	order?: TSortOrder
+}
+
+export interface IUsersResponse {
+	users: IUser[]
+	total: number
+	skip: number
+	limit: number
+}
+
 export interface IUser {
 	id: number
 	firstName: string
