@@ -1,2 +1,5 @@
 export * from './button'
 export * from './dropdown-menu'
+export * from './table'
+export * from './card'
+export * from './toggle-theme'
