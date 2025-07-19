@@ -11,7 +11,8 @@ export function TanstackQueryProvider({
 		new QueryClient({
 			defaultOptions: {
 				queries: {
-					staleTime: 0,
+					staleTime: 1000 * 60 * 5,
+					refetchOnMount: false,
 					refetchOnWindowFocus: false,
 					retry: 3,
 					retryDelay: attemptIndex =>

@@ -1,5 +1,7 @@
 import './globals.css'
-import { Container } from '@/shared/ui'
+import { Header } from '@/features/header'
+import { Container } from '@/shared/components'
+import { MainProvider } from '@/shared/providers'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -18,13 +20,15 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en'>
+		<html lang='ru' suppressHydrationWarning>
 			<body className={`${inter.className} antialiased`}>
-				{/* <Header /> */}
-				<main className='relative mb-4 flex-grow px-2'>
-					<Container>{children}</Container>
-				</main>
-				{/* <Footer /> */}
+				<MainProvider>
+					<Header />
+					<main className='relative mb-4 flex-grow px-2'>
+						<Container>{children}</Container>
+					</main>
+					{/* <Footer /> */}
+				</MainProvider>
 			</body>
 		</html>
 	)
