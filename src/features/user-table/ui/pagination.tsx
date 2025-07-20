@@ -19,24 +19,26 @@ export function Pagination({
 	return (
 		<div className='flex items-center justify-end gap-2 py-4'>
 			<Button
+				className='cursor-pointer disabled:cursor-not-allowed'
 				variant='outline'
 				size='sm'
 				onClick={() => onPageChange(currentPage - 1)}
 				disabled={currentPage === 1 || isPending}
 			>
-				<ChevronLeft className='h-4 w-4' />
+				<ChevronLeft />
 				<span className='sr-only'>Предыдущая страница</span>
 			</Button>
 			<span className='text-muted-foreground text-sm'>
 				{currentPage} из {totalPages}
 			</span>
 			<Button
+				className='cursor-pointer disabled:cursor-not-allowed'
 				variant='outline'
 				size='sm'
 				onClick={() => onPageChange(currentPage + 1)}
 				disabled={currentPage === totalPages || isPending}
 			>
-				<ChevronRight className='h-4 w-4' />
+				<ChevronRight />
 				<span className='sr-only'>Следующая страница</span>
 			</Button>
 		</div>

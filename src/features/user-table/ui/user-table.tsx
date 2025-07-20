@@ -7,7 +7,7 @@ import { TableContent } from './table-content'
 import { useUsers } from '@/entities/user/hooks'
 import { TSortOrder, TUserSortKey } from '@/entities/user/model'
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components'
-import { useState, useTransition } from 'react'
+import { useState } from 'react'
 
 interface IUserTableProps {
 	onUserSelect: (userId: number) => void
@@ -17,9 +17,8 @@ export function UserTable({ onUserSelect }: IUserTableProps) {
 	const [page, setPage] = useState(1)
 	const [sortBy, setSortBy] = useState<TUserSortKey>()
 	const [order, setOrder] = useState<TSortOrder>()
-	const [isPending, startTransition] = useTransition()
 
-	const { data, isLoading, isError, error } = useUsers({
+	const { data, isFetching, isLoading, isError, error } = useUsers({
 		page,
 		limit: USERS_PER_PAGE,
 		sortBy,
@@ -30,24 +29,20 @@ export function UserTable({ onUserSelect }: IUserTableProps) {
 	const totalPages = Math.ceil(totalUsers / USERS_PER_PAGE)
 
 	const handleSortChange = (newSortKey: TUserSortKey) => {
-		startTransition(() => {
-			if (sortBy === newSortKey) {
-				setOrder(order === 'asc' ? 'desc' : 'asc')
-			} else {
-				setSortBy(newSortKey)
-				setOrder('asc')
-			}
-			setPage(1)
-		})
+		if (sortBy === newSortKey) {
+			setOrder(order === 'asc' ? 'desc' : 'asc')
+		} else {
+			setSortBy(newSortKey)
+			setOrder('asc')
+		}
+		setPage(1)
 	}
 
 	const handlePageChange = (newPage: number) => {
-		startTransition(() => {
-			setPage(newPage)
-		})
+		setPage(newPage)
 	}
 
-	if (isLoading && !data && !isPending) {
+	if (isLoading && !data) {
 		return <LoadingState />
 	}
 
@@ -58,12 +53,14 @@ export function UserTable({ onUserSelect }: IUserTableProps) {
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>Список пользователей</CardTitle>
+				<CardTitle>
+					Нажмите на пользователя, чтобы увидеть его посты
+				</CardTitle>
 			</CardHeader>
 			<CardContent>
 				<TableContent
 					users={data?.users || []}
-					isPending={isPending}
+					isPending={isFetching}
 					sortBy={sortBy}
 					order={order}
 					onSortChange={handleSortChange}

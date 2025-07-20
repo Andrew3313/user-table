@@ -43,36 +43,21 @@ export function TableContent({
 				<Table>
 					<TableHeader>
 						<TableRow>
-							{USER_TABLE_COLUMNS.map(
-								({ key, label, className }) => (
-									<TableHead key={key} className={className}>
-										<SortableHeader
-											sortKey={key as TUserSortKey}
-											currentSortKey={sortBy}
-											currentSortOrder={order}
-											onSortChange={onSortChange}
-										>
-											{label}
-										</SortableHeader>
-									</TableHead>
-								)
-							)}
+							{USER_TABLE_COLUMNS.map(({ key, label }) => (
+								<TableHead key={key}>
+									<SortableHeader
+										sortKey={key as TUserSortKey}
+										currentSortKey={sortBy}
+										currentSortOrder={order}
+										onSortChange={onSortChange}
+									>
+										{label}
+									</SortableHeader>
+								</TableHead>
+							))}
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{isPending && (
-							<TableRow>
-								<TableCell
-									colSpan={5}
-									className='relative py-8 text-center'
-								>
-									<div className='absolute inset-0 z-10 flex items-center justify-center bg-white/70'>
-										<div className='h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900' />
-									</div>
-									Загрузка...
-								</TableCell>
-							</TableRow>
-						)}
 						{users.map(user => (
 							<TableRow
 								key={user.id}
@@ -83,17 +68,11 @@ export function TableContent({
 										'pointer-events-none opacity-50'
 								)}
 							>
-								<TableCell className='font-medium'>
-									{user.firstName}
-								</TableCell>
+								<TableCell>{user.firstName}</TableCell>
 								<TableCell>{user.lastName}</TableCell>
 								<TableCell>{user.age}</TableCell>
-								<TableCell className='hidden md:table-cell'>
-									{user.gender}
-								</TableCell>
-								<TableCell className='hidden lg:table-cell'>
-									{user.email}
-								</TableCell>
+								<TableCell>{user.gender}</TableCell>
+								<TableCell>{user.email}</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
