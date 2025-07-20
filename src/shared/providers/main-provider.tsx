@@ -12,6 +12,7 @@ export function MainProvider({ children }: PropsWithChildren<unknown>) {
 				defaultTheme='dark'
 				enableSystem
 				disableTransitionOnChange
+				storageKey='user-table-theme'
 			>
 				{children}
 			</ThemeProvider>
