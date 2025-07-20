@@ -54,7 +54,7 @@ export function UserTable({ onUserSelect }: IUserTableProps) {
 		<Card>
 			<CardHeader>
 				<CardTitle>
-					Нажмите на пользователя, чтобы увидеть его посты
+					Нажмите на пользователя, чтобы посмотреть его посты
 				</CardTitle>
 			</CardHeader>
 			<CardContent>

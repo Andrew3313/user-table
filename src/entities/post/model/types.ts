@@ -11,3 +11,10 @@ export interface IPost {
 		dislikes: number
 	}
 }
+
+export interface IPostsResponse {
+	posts: TPostsList
+	total: number
+	skip: number
+	limit: number
+}

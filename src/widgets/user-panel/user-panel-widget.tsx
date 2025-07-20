@@ -10,12 +10,16 @@ interface IUserPanelWidgetProps {
 
 export function UserPanelWidget({ dehydratedState }: IUserPanelWidgetProps) {
 	const [selectedUserId, setSelectedUserId] = useState<number | null>(null)
+	// const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
 	const handleUserSelect = useCallback((userId: number) => {
 		setSelectedUserId(userId)
 	}, [])
 
-	console.log(selectedUserId)
+	// const handleSidebarClose = useCallback(() => {
+	// 	setIsSidebarOpen(false)
+	// 	setSelectedUserId(null)
+	// }, [])
 
 	return (
 		<HydrationBoundary state={dehydratedState}>

@@ -15,7 +15,7 @@ export interface IGetUsersParams {
 }
 
 export interface IUsersResponse {
-	users: IUser[]
+	users: TUsersList
 	total: number
 	skip: number
 	limit: number
