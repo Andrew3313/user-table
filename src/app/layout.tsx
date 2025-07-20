@@ -11,7 +11,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-	title: 'Пользователи',
+	title: 'Список пользователей',
 	description: ''
 }
 
@@ -27,7 +27,7 @@ export default function RootLayout({
 			>
 				<MainProvider>
 					<HeaderWidget />
-					<main className='relative mb-4 flex-grow px-2'>
+					<main className='relative mb-4 flex-grow px-2 sm:px-4'>
 						<Container>{children}</Container>
 					</main>
 					<FooterWidget />
