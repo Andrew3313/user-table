@@ -7,10 +7,10 @@ import type React from 'react'
 
 interface ISortableHeaderProps {
 	sortKey: TUserSortKey
-	currentSortKey: TUserSortKey | undefined
-	currentSortOrder: TSortOrder | undefined
 	onSortChange: (key: TUserSortKey) => void
 	children: React.ReactNode
+	currentSortKey?: TUserSortKey
+	currentSortOrder?: TSortOrder
 }
 
 export function SortableHeader({

@@ -1,9 +1,14 @@
 'use client'
 
 import { UserTable } from '@/features/user-table/ui'
+import { HydrationBoundary } from '@tanstack/react-query'
 import { useCallback, useState } from 'react'
 
-export function UserPanelWidget() {
+interface IUserPanelWidgetProps {
+	dehydratedState: unknown
+}
+
+export function UserPanelWidget({ dehydratedState }: IUserPanelWidgetProps) {
 	const [selectedUserId, setSelectedUserId] = useState<number | null>(null)
 
 	const handleUserSelect = useCallback((userId: number) => {
@@ -12,5 +17,9 @@ export function UserPanelWidget() {
 
 	console.log(selectedUserId)
 
-	return <UserTable onUserSelect={handleUserSelect} />
+	return (
+		<HydrationBoundary state={dehydratedState}>
+			<UserTable onUserSelect={handleUserSelect} />
+		</HydrationBoundary>
+	)
 }
